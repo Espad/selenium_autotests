@@ -18,7 +18,6 @@ public class BasePage {
     public String runNumber;
 
     public BasePage(){
-//        System.out.println(Hook.getFeatureFileNameFromScenarioId());
         this.runNumber = Hook.runNumber;
         this.driver = Hook.driver;
         long timeOutInSeconds = 10; // just an arbitrary value example
@@ -38,7 +37,6 @@ public class BasePage {
         TakesScreenshot scrShot =((TakesScreenshot)this.driver);
 
         //Call getScreenshotAs method to create image file
-
         File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
         // Move image file to new destination

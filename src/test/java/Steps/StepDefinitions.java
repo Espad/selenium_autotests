@@ -66,13 +66,11 @@ public class StepDefinitions{
 
 
     
-    
+
     @Then("fill forms with data {string} and submit")
     public void fillFormAndSubmit(String result) throws IOException {
         List<String> items = Arrays.asList(result.split("\\s*;\\s*"));
         testPage.fillFormData(items);
-//        System.out.println();
-//        "C:\\Users\\test_user\\Downloads\\abc.png"
         testPage.getScreenShot("C:\\Users\\test_user\\Downloads\\" + basePage.runNumber + ".png");
         testPage.submitFormData();
         try{
