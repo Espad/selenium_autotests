@@ -1,7 +1,6 @@
 package Pages;
 
-import Hooks.Hook;
-import io.cucumber.java.Scenario;
+import Managers.Hook;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;

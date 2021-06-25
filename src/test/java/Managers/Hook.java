@@ -1,4 +1,4 @@
-package Hooks;
+package Managers;
 
 import java.util.concurrent.TimeUnit;
 import io.cucumber.java.After;
