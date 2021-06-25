@@ -3,9 +3,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Properties;
 
-public class DBC_Class {
+public class DBC_Postrge {
     private final String url = "jdbc:postgresql://localhost:5432/dvdrental";
     private final String user = "postgres";
     private final String password = "123";
@@ -55,7 +54,7 @@ public class DBC_Class {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DBC_Class app = new DBC_Class();
+        DBC_Postrge app = new DBC_Postrge();
         int actorCount = app.getActorCount();
         System.out.println(actorCount);
 
