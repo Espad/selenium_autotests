@@ -15,7 +15,7 @@ public class TestPage extends BasePage {
     WebDriver driver;
 
     public TestPage(WebDriver webDriver) {
-        super();
+        super(webDriver);
         this.driver = webDriver;
         PageFactory.initElements(this.driver, this);
     }
@@ -61,6 +61,10 @@ public class TestPage extends BasePage {
     @FindBy(how = How.CSS, using = "#contact_form > fieldset > div:nth-child(14) > div > button")
     private WebElement btn_SubmitFormData;
 
+    @FindBy(how = How.CSS, using = "#site-name > a")
+    private WebElement btn_backToMainPage;
+
+
     public void closePopupRegistration(){
         WebDriverWait wait = new WebDriverWait(this.driver, 10);
         WebElement btn_Close = wait.until(ExpectedConditions.elementToBeClickable(btn_ClosePopup));
@@ -93,6 +97,10 @@ public class TestPage extends BasePage {
 
     public void submitFormData() {
         btn_SubmitFormData.click();
+    }
+
+    public void goBackFromTestPageToMainPage(){
+        btn_backToMainPage.click();
     }
 
 }

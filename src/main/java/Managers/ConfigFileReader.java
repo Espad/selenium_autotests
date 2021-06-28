@@ -1,19 +1,19 @@
 package Managers;
 
-import enums.Driver;
-import enums.Environment;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ConfigReadManager {
-    private Properties properties;
-    private final String propertyFilePath= "configs//Configuration.properties";
+import enums.DriverType;
+import enums.EnvironmentType;
 
-    public void ConfigFileReader(){
+public class ConfigFileReader {
+    private Properties properties;
+    private final String propertyFilePath= "config_files//test.properties";
+
+    public ConfigFileReader(){
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(propertyFilePath));
@@ -29,6 +29,7 @@ public class ConfigReadManager {
             throw new RuntimeException("Configuration.properties not found at " + propertyFilePath);
         }
     }
+
 
     public String getDriverPath(){
         String driverPath = properties.getProperty("driverPath");
@@ -48,24 +49,36 @@ public class ConfigReadManager {
         return 30;
     }
 
+    public long getPageLoadTimeout() {
+        String pageLoadTimeOut = properties.getProperty("pageLoadTimeOut");
+        if(pageLoadTimeOut != null) {
+            try{
+                return Long.parseLong(pageLoadTimeOut);
+            }catch(NumberFormatException e) {
+                throw new RuntimeException("Not able to parse value : " + pageLoadTimeOut + " in to Long");
+            }
+        }
+        return 10;
+    }
+
     public String getApplicationUrl() {
         String url = properties.getProperty("url");
         if(url != null) return url;
         else throw new RuntimeException("Application Url not specified in the Configuration.properties file for the Key:url");
     }
 
-    public Driver getBrowser() {
+    public DriverType getBrowser() {
         String browserName = properties.getProperty("browser");
-        if(browserName == null || browserName.equals("chrome")) return Driver.CHROME;
-        else if(browserName.equalsIgnoreCase("firefox")) return Driver.FIREFOX;
-        else if(browserName.equals("iexplorer")) return Driver.INTERNETEXPLORER;
+        if(browserName == null || browserName.equals("chrome")) return DriverType.CHROME;
+        else if(browserName.equalsIgnoreCase("firefox")) return DriverType.FIREFOX;
+        else if(browserName.equals("iexplorer")) return DriverType.INTERNETEXPLORER;
         else throw new RuntimeException("Browser Name Key value in Configuration.properties is not matched : " + browserName);
     }
 
-    public Environment getEnvironment() {
+    public EnvironmentType getEnvironment() {
         String environmentName = properties.getProperty("environment");
-        if(environmentName == null || environmentName.equalsIgnoreCase("local")) return Environment.LOCAL;
-        else if(environmentName.equals("remote")) return Environment.REMOTE;
+        if(environmentName == null || environmentName.equalsIgnoreCase("local")) return EnvironmentType.LOCAL;
+        else if(environmentName.equals("remote")) return EnvironmentType.REMOTE;
         else throw new RuntimeException("Environment Type Key value in Configuration.properties is not matched : " + environmentName);
     }
 

@@ -1,9 +1,6 @@
 package Pages;
 
-import Managers.Hook;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,14 +8,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 
+import io.cucumber.java.Scenario;
+
+
 public class BasePage {
     public WebDriverWait wait;
     public WebDriver driver;
     public String runNumber;
 
-    public BasePage(){
-        this.runNumber = Hook.runNumber;
-        this.driver = Hook.driver;
+    public BasePage(WebDriver driver){
+        this.driver = driver;
         long timeOutInSeconds = 10; // just an arbitrary value example
         this.wait = new WebDriverWait(this.driver, timeOutInSeconds);
         PageFactory.initElements(this.driver, this);
@@ -32,16 +31,14 @@ public class BasePage {
         this.driver.get(webPage);
     }
 
-    public void getScreenShot(String path) throws IOException {
-        TakesScreenshot scrShot =((TakesScreenshot)this.driver);
-
-        //Call getScreenshotAs method to create image file
-        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-
-        // Move image file to new destination
-        File DestFile=new File(path);
-
-        //Copy file at destination
-        FileUtils.copyFile(SrcFile, DestFile);
+    public void checkPageUrl(String shouldBeUrl){
+        String currentUrl = this.driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains(shouldBeUrl));
     }
+
+    public void checkPageTitle(String shouldBeTitle){
+        String currentPageTitle = this.driver.getTitle();
+        Assert.assertTrue(currentPageTitle.contains(shouldBeTitle));
+    }
+
 }

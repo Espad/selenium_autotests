@@ -5,22 +5,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import enums.Driver;
-import enums.Environment;
+import enums.DriverType;
+import enums.EnvironmentType;
 
 public class WebDriverManager {
     private WebDriver driver;
-    private static Driver driverType;
-    private static Environment environmentType;
+    private static DriverType driverType;
+    private static EnvironmentType environmentType;
     private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
 
     public WebDriverManager() {
-        driverType = ConfigReadManager.getInstance().getConfigReader().getBrowser();
-        environmentType = ConfigReadManager.getInstance().getConfigReader().getEnvironment();
+        driverType = FileReaderManager.getInstance().getConfigReader().getBrowser();
+        environmentType = FileReaderManager.getInstance().getConfigReader().getEnvironment();
     }
 
     public WebDriver getDriver() {
         if(driver == null) driver = createDriver();
+
         return driver;
     }
 
@@ -31,6 +32,7 @@ public class WebDriverManager {
             case REMOTE : driver = createRemoteDriver();
                 break;
         }
+        System.out.println("create driver via manager");
         return driver;
     }
 
@@ -50,12 +52,15 @@ public class WebDriverManager {
                 break;
         }
 
-        if(ConfigReadManager.getInstance().getConfigReader().getBrowserWindowSize()) driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(ConfigReadManager.getInstance().getConfigReader().getImplicitlyWait(), TimeUnit.SECONDS);
+        if(FileReaderManager.getInstance().getConfigReader().getBrowserWindowSize()) driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitlyWait(), TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(FileReaderManager.getInstance().getConfigReader().getPageLoadTimeout(), TimeUnit.SECONDS);
+
         return driver;
     }
 
     public void closeDriver() {
+        System.out.println("close driver via manager");
         driver.close();
         driver.quit();
     }

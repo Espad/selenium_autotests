@@ -14,29 +14,30 @@ public class MainPage extends BasePage{
     WebDriver driver;
 
     public MainPage(WebDriver webDriver) {
-        super();
+        super(webDriver);
         this.driver = webDriver;
         PageFactory.initElements(this.driver, this);
     }
 
     @FindAll(@FindBy(how = How.CSS, using = ".btn.btn-success"))
-    public List<WebElement> btn_List;
+    private List<WebElement> btn_List;
 
+    @FindBy(how = How.XPATH, using = "//*[@id=\"navbar-collapse\"]/nav/ul/li[2]/a")
+    private WebElement btn_SeleniumMenu;
 
-    public void checkPageUrl(String shouldBeUrl){
-        String currentUrl = this.driver.getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains(shouldBeUrl));
-    }
-
-    public void checkPageTitle(String shouldBeTitle){
-        String currentPageTitle = this.driver.getTitle();
-        System.out.println(currentPageTitle);
-        Assert.assertTrue(currentPageTitle.contains(shouldBeTitle));
-    }
+    @FindBy(how = How.XPATH, using = "//*[@id=\"navbar-collapse\"]/nav/ul/li[2]/ul/li[1]/a"    )
+    private WebElement btn_SeleniumWithJava;
 
     public void click_GoToTestPage() {
         btn_List.get(0).click();
+    }
 
+    public void click_SeleniumMenu(){
+        btn_SeleniumMenu.click();
+    }
+
+    public void click_SeleniumWithJava(){
+        btn_SeleniumWithJava.click();
     }
 
 }

@@ -1,6 +1,6 @@
 package enums;
 
-public enum Environment {
+public enum EnvironmentType {
     LOCAL,
     REMOTE,
 }
