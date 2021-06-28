@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/java/Features/",
         glue = "Steps",
+        tags = "@RegressionTest",
         plugin = {"pretty"}
         )
 public class TestRunner {

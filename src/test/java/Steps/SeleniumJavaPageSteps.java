@@ -18,6 +18,12 @@ public class SeleniumJavaPageSteps {
     public void checkTitleAndLinkOnJavaSeleniumPage(String shouldBeUrl, String title) {
         seleniumJavaPagePage.checkPageUrl(shouldBeUrl);
         seleniumJavaPagePage.checkPageTitle(title);
+
+    }
+
+    @Then("user opens {string} on page")
+    public void openNthArticleOnPage(String article_number) {
+        seleniumJavaPagePage.openNthArticleOnPage(article_number);
         try{
             Thread.sleep(2000);
         }

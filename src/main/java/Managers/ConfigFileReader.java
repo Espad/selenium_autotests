@@ -61,12 +61,6 @@ public class ConfigFileReader {
         return 10;
     }
 
-    public String getApplicationUrl() {
-        String url = properties.getProperty("url");
-        if(url != null) return url;
-        else throw new RuntimeException("Application Url not specified in the Configuration.properties file for the Key:url");
-    }
-
     public DriverType getBrowser() {
         String browserName = properties.getProperty("browser");
         if(browserName == null || browserName.equals("chrome")) return DriverType.CHROME;

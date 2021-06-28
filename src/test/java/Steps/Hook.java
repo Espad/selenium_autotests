@@ -30,7 +30,9 @@ public class Hook {
     @After(order = 1)
     public void getScreenShot(Scenario scenario) throws IOException {
         System.out.println("make screenshot");
-        runNumber = scenario.getName() + "_feature file line number_" + scenario.getId().split(":")[3];
+//        runNumber = scenario.getName() + "_feature file line number_" + scenario.getId().split(":")[3];
+        runNumber = scenario.getName().replace("\"","");
+
         String path = "C:\\Users\\test_user\\Downloads\\" + runNumber + ".png";
         TakesScreenshot scrShot =((TakesScreenshot) testContext.getWebDriverManager().getDriver());
 
