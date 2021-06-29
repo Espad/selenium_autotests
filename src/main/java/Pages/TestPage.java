@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
+import DataTypes.FillFormData;
 
 /** Код для работы со страницей тестов, на которой тестируется взаимодействие с различными элементами при помощи WebDriver - WebElement.
  *  https://www.seleniumeasy.com/test/
@@ -96,6 +97,22 @@ public class TestPage extends BasePage {
 
         input_FormZipCode.sendKeys(items.get(7));
         input_FormProjectDescription.sendKeys(items.get(8));
+
+    }
+
+    public void fillFormDataWithDataType(FillFormData customer) {
+        input_FormName.sendKeys(customer.firstName);
+        input_FormSecondName.sendKeys(customer.lastName);
+        input_FormEmail.sendKeys(customer.emailAddress);
+        input_FormPhone.sendKeys(customer.phoneNumber.home);
+        input_FormAddress.sendKeys(customer.address.streetAddress);
+        input_FormCity.sendKeys(customer.address.city);
+
+        Select dropdown = new Select(list_States);
+        dropdown.selectByVisibleText(customer.address.state);
+
+        input_FormZipCode.sendKeys(customer.address.postCode);
+        input_FormProjectDescription.sendKeys(customer.projectDescription);
 
     }
 

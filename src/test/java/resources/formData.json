@@ -1,0 +1,42 @@
+[
+  {
+    "firstName": "Lakshay",
+    "lastName": "Sharma",
+    "emailAddress": "Lakshay@Gmail.com",
+    "address": {
+      "streetAddress": "Shalimar Bagh",
+      "city": "Delhi",
+      "state": "Alabama",
+      "postCode": "13314"
+
+    },
+    "phoneNumber": {
+      "home": "1923232324",
+      "mobile": "0987654321"
+    },
+    "website": "www.aa.com",
+    "hasHosting": "Yes",
+    "projectDescription": "12312312 dddd aaaaa"
+
+  },
+  {
+    "firstName": "Virender",
+    "lastName": "Singh",
+    "emailAddress": "Virender@Gmail.com",
+    "address": {
+      "streetAddress": "Shalimar Bagh",
+      "city": "Delhi",
+      "state": "Alabama",
+      "postCode": "13314"
+
+    },
+    "phoneNumber": {
+      "home": "1923232323",
+      "mobile": "0987654321"
+    },
+    "website": "www.aa.com",
+    "hasHosting": "Yes",
+    "projectDescription": "12312312   asdasd ddd"
+
+  }
+]

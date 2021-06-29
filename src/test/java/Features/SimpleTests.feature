@@ -27,3 +27,18 @@ Feature: Test selenium partial test
             | test_number | webPage                       | title_main                                                       | webpageSeleniumWithJava                         | title_selenium_with_java            | article_number |
             |     1       | https://www.seleniumeasy.com/ | Learn Selenium with Best Practices and Examples \| Selenium Easy | https://www.seleniumeasy.com/selenium-tutorials | Selenium Tutorials \| Selenium Easy | 1              |
             |     2       | https://www.seleniumeasy.com/ | Learn Selenium with Best Practices and Examples \| Selenium Easy | https://www.seleniumeasy.com/selenium-tutorials | Selenium Tutorials \| Selenium Easy | 3              |
+
+    @jsonTest
+    # The third example has several steps
+    Scenario Outline: "<test_number>" : Go to website and send form data with json
+        Given User is on "<webPage>" page
+        When I am on the "<webPage>" page
+        Then the page title should be "<title_main>"
+        Then user go to test page by clicking button Demo Website
+        Then click on root element
+        Then click on form submit element
+        Then fill forms with data from json and name "<customer_first_name>" and submit
+        Examples:
+            | test_number | webPage                       | title_main                                                       | customer_first_name |
+            |     1       | https://www.seleniumeasy.com/ | Learn Selenium with Best Practices and Examples \| Selenium Easy | Lakshay             |
+            |     2       | https://www.seleniumeasy.com/ | Learn Selenium with Best Practices and Examples \| Selenium Easy | Virender            |

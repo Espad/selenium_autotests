@@ -1,5 +1,7 @@
 package Steps;
 
+import DataTypes.FillFormData;
+import Managers.FileReaderManager;
 import Managers.TestContext;
 import Pages.BasePage;
 import Pages.MainPage;
@@ -47,6 +49,15 @@ public class TestPageSteps {
 
 
     }
+
+    @Then("fill forms with data from json and name {string} and submit")
+    public void fillFormAndSubmitJson(String customerName) {
+        FillFormData customer = FileReaderManager.getInstance().getJsonReader().getCustomerByName(customerName);
+        testPage.fillFormDataWithDataType(customer);
+        testPage.submitFormData();
+
+    }
+
     @Then("user go back to main page")
     public void goToMainPage(){
         testPage.goBackFromTestPageToMainPage();
