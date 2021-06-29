@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/java/Features/",
         glue = "Steps",
         tags = "@RegressionTest",
-        plugin = {"pretty"}
+        plugin = {"pretty", "json:target/Destination/cucumber.json", "html:target/Destination/index.html"}
         )
 public class TestRunner {
 }
