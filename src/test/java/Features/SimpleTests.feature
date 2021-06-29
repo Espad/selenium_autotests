@@ -1,7 +1,7 @@
-Feature: Test selenium easy partial test
+Feature: Test selenium partial test
     @SmokeTest
     # The first example has several steps
-    Scenario Outline: Go to website and send form data "<test_number>"
+    Scenario Outline: "<test_number>" : Go to website and send form data
     Given User is on "<webPage>" page
     When I am on the "<webPage>" page
     Then the page title should be "<title_main>"
@@ -12,11 +12,11 @@ Feature: Test selenium easy partial test
     Examples:
         | test_number | webPage                       | title_main                                                       | result_list                                                                                            |
         |     1       | https://www.seleniumeasy.com/ | Learn Selenium with Best Practices and Examples \| Selenium Easy | aa ; bb ; a@test.com ; 1923232323 ; test_address ; SaintP ; Alabama ; 19800 ; test project description |
-        |     3       | https://www.seleniumeasy.com/ | Learn Selenium with Best Practices and Examples \| Selenium Easy | cc ; dd ; b@test.com ; 1923232323 ; test_address ; SaintP ; Alabama ; 19800 ; test project description |
+        |     2       | https://www.seleniumeasy.com/ | Learn Selenium with Best Practices and Examples \| Selenium Easy | cc ; dd ; b@test.com ; 1923232323 ; test_address ; SaintP ; Alabama ; 19800 ; test project description |
 
     @RegressionTest
     # The second example has several steps
-    Scenario Outline: Go to website and open "<test_number>" article
+    Scenario Outline: "<test_number>" : Go to website and open "<article_number>" article
         Given User is on "<webPage>" page
         When I am on the "<webPage>" page
         Then the page title should be "<title_main>"

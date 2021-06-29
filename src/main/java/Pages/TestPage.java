@@ -8,8 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.List;
+
+/** Код для работы со страницей тестов, на которой тестируется взаимодействие с различными элементами при помощи WebDriver - WebElement.
+ *  https://www.seleniumeasy.com/test/
+ *
+ * */
 
 public class TestPage extends BasePage {
     WebDriver driver;

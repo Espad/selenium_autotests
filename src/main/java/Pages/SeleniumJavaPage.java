@@ -10,6 +10,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+/** Код для работы со страницей Selenium With Java, на которой тестируется взаимодействие взаимодействие со структурой страницы и поиском нужного элемента.
+ *  https://www.seleniumeasy.com/selenium-tutorials
+ *
+ * */
 public class SeleniumJavaPage extends BasePage{
     WebDriver driver;
 

@@ -10,6 +10,9 @@ import java.io.IOException;
 
 import io.cucumber.java.Scenario;
 
+/** Базовый класс, инициализирует основные методы, от которых затем наследуются остальные страницы */
+
+
 
 public class BasePage {
     public WebDriverWait wait;
